@@ -7,9 +7,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using static Persistence.DataSeedingInitializer;
 
 namespace PayCompute.Controllers
 {
+    [Authorize]
     public class PayController : Controller
     {
         private readonly IPayComputationService _payComputationService;
@@ -56,7 +58,6 @@ namespace PayCompute.Controllers
             return View(payRecords);
         }
 
-        //[Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
             ViewBag.employees = _employeeService.GetAllEmployeesForPayroll();
